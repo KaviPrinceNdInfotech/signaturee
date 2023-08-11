@@ -68,7 +68,7 @@ class Mycrusial extends StatelessWidget {
                   indicatorRadius: 4,
                   itemSpacing: 15,
                   currentIndicatorColor: AppColors.themecolors,
-                  padding: EdgeInsets.only(bottom: 3),
+                  padding: EdgeInsets.only(bottom: 6),
                 ),
                 itemCount: images.length,
                 enableAutoSlider: true,

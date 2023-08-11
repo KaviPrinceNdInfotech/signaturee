@@ -25,6 +25,8 @@ import 'package:url_launcher/url_launcher.dart';
 class MainDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    // Size size = MediaQuery.of(context).size;
     _launchWhatsapp() async {
       const url = "https://wa.me/?text=YourTextHere";
       if (await canLaunch(url)) {
@@ -41,16 +43,16 @@ class MainDrawer extends StatelessWidget {
           children: <Widget>[
             DrawerHeader(
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 1.7.h),
+                padding: EdgeInsets.symmetric(vertical: 1.2.h),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CircleAvatar(
                       backgroundColor: Colors.white,
-                      radius: 40,
+                      radius: size.height * 0.05,
                       child: Center(
                           child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(5.0),
                         child: Image.asset('lib/assets/logo_signature.png'),
                       )),
                     ),

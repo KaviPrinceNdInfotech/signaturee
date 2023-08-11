@@ -21,6 +21,26 @@ class AppColors {
   static Color white = Colors.white;
   static Color grey400 = Colors.grey.shade400;
   static Color backgroundColor = Color(0xFF3284D6);
+
+  ///
+  static Color g1 = Color(0xff028174);
+  static Color g2 = Color(0xff0ab68b);
+  static Color g3 = Color(0xff92de8b);
+  static Color g4 = Color(0xffffe3b3);
+
+  ///
+  static Color g5 = Color(0xff006bbb);
+  static Color g6 = Color(0xff30a0e0);
+  static Color g7 = Color(0xffffc872);
+  static Color g8 = Color(0xffffe3b3);
+
+  ///
+  static Color g9 = Color(0xfffab23d);
+  static Color g10 = Color(0xffffc812);
+  static Color g11 = Color(0xff000000);
+  static Color g12 = Color(0xff262626);
+  static Color g13 = Color(0xff383838);
+  static Color g14 = Color(0xfffbfffe);
 }
 
 LinearGradient gradient1 = LinearGradient(
