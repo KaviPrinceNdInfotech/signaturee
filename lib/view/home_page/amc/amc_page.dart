@@ -155,7 +155,7 @@ class AmcPage extends StatelessWidget {
                       //shadowColor: AppColors.golden,
                       elevation: 3,
                       child: Container(
-                        height: 67.h,
+                        height: 60.h,
                         width: 100.w,
                         decoration: BoxDecoration(
                           color: Colors.white70,
@@ -257,7 +257,7 @@ class AmcPage extends StatelessWidget {
                       shadowColor: AppColors.golden,
                       elevation: 0,
                       child: Container(
-                        height: 14.h,
+                        height: 18.h,
                         width: 100.w,
                         decoration: BoxDecoration(
                           color: Colors.white70,

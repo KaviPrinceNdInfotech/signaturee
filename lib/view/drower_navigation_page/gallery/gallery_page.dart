@@ -33,7 +33,7 @@ class Gallerys extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: 88.5.h,
+              height: 87.5.h,
               child: ListView.builder(
                   itemCount: images.length,
                   itemBuilder: (BuildContext context, int index) {

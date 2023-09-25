@@ -273,7 +273,7 @@ class WebsitePage extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 64.5.h,
+            height: 63.5.h,
             child: ListView.builder(
                 itemCount: images.length,
                 itemBuilder: (BuildContext context, int index) {

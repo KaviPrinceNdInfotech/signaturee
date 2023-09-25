@@ -162,7 +162,7 @@ class MyHolidayPage extends StatelessWidget {
       ),
       body: SafeArea(
         child: Container(
-          height: 94.5.h,
+          // height: 94.5.h,
           width: 100.w,
           color: Colors.white,
           child: Padding(
@@ -170,7 +170,7 @@ class MyHolidayPage extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  height: 4.h,
+                  height: 3.5.h,
                   color: Colors.white24,
                   child: Padding(
                     padding: const EdgeInsets.all(4.0),

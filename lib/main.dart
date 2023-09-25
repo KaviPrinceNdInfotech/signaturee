@@ -29,6 +29,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         //title: 'Book Appointment',
         theme: ThemeData(
+          useMaterial3: true,
+          //colorSchemeSeed: Colors.blueGrey,
+          brightness: Brightness.light,
           // This is the theme of your application.
           //
           // Try running your application with "flutter run". You'll see the

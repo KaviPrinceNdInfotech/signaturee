@@ -57,7 +57,7 @@ class MyVoucherPage extends StatelessWidget {
                   height: 2.h,
                 ),
                 SizedBox(
-                  height: 86.h,
+                  height: 85.h,
                   child: GridView.builder(
                     gridDelegate:
                         const SliverGridDelegateWithMaxCrossAxisExtent(

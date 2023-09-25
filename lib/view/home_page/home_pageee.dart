@@ -1,3 +1,4 @@
+//yellow…
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_launch/flutter_launch.dart';
@@ -106,17 +107,20 @@ class HomePage extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     int pageIndex = 0;
     GlobalKey<ScaffoldState> _key2 = GlobalKey();
+
+    ///todo: working condition....................
     return Scaffold(
       key: _key2,
-      backgroundColor: AppColors.themecolors,
+      backgroundColor: AppColors.g10,
       appBar: AppBar(
         elevation: 1,
         centerTitle: false,
-        backgroundColor: AppColors.themecolors,
+        backgroundColor: AppColors.g10,
         leading: IconButton(
           icon: Icon(
             Icons.dehaze_rounded,
             size: 23,
+            color: Colors.white,
           ),
           onPressed: () {
             _key2.currentState!.openDrawer();
@@ -142,6 +146,7 @@ class HomePage extends StatelessWidget {
                   icon: Icon(
                     Icons.notifications_none,
                     size: 23,
+                    color: Colors.white,
                   )),
               IconButton(
                   onPressed: () {
@@ -154,6 +159,7 @@ class HomePage extends StatelessWidget {
                   icon: Icon(
                     Icons.local_phone_outlined,
                     size: 23,
+                    color: Colors.white,
                   )),
               IconButton(
                   onPressed: () {
@@ -162,19 +168,26 @@ class HomePage extends StatelessWidget {
                   icon: Icon(
                     Icons.email_outlined,
                     size: 23,
+                    color: Colors.white,
                   )),
             ],
           ),
         ],
       ),
+
       drawer: MainDrawer(),
+
+      ///............................
       body: SafeArea(
         child: SingleChildScrollView(
+          ///....
           physics: NeverScrollableScrollPhysics(),
+
+          ///................
           child: Container(
-            height: 100.h,
+            height: 90.h,
             width: 100.w,
-            color: Colors.white,
+            color: AppColors.g12,
             child: Column(
               children: [
                 Padding(
@@ -186,146 +199,159 @@ class HomePage extends StatelessWidget {
                     color: Colors.grey,
                     child: Padding(
                       padding: EdgeInsets.symmetric(
-                          horizontal: 0.4.h, vertical: 0.5.h),
+                          horizontal: 0.0.h, vertical: 0.h),
                       child: Mycrusial(),
                     ),
                   ),
                 ),
-                //Spacer(),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 1.h, vertical: 0.h),
-                  child: SizedBox(
-                    height: 44.h,
-                    child: GridView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        gridDelegate:
-                            const SliverGridDelegateWithMaxCrossAxisExtent(
-                          maxCrossAxisExtent: 290,
-                          childAspectRatio: 5 / 9,
-                          crossAxisSpacing: 5,
-                          mainAxisSpacing: 7,
-                          mainAxisExtent: 60 + 21,
-                        ),
-                        itemCount: productname.length,
-                        itemBuilder: (BuildContext ctx, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              if (index == 0) {
-                                Get.to(() => ProfilePage());
-                                //Get.to(() => WomenPage());
-                                //Get.to(() => WaterTracking());
-                              } else if (index == 1) {
-                                Get.to(() => AmcPage());
-                              } else if (index == 2) {
-                                Get.to(() => PaymentOptions());
-                                //Get.to(() => HotDeals());
-                                //Get.to(() => WalkTracking());
-                              } else if (index == 3) {
-                                // whatsAppOpen();
-                                _launchWhatsapp();
+                // Spacer(),
+                SizedBox(
+                  height: 41.7.h,
+                  child: GridView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: 300,
+                        childAspectRatio: 5 / 9,
+                        crossAxisSpacing: 5,
+                        mainAxisSpacing: 5,
+                        mainAxisExtent: 60 + 16.4,
+                      ),
+                      itemCount: productname.length,
+                      itemBuilder: (BuildContext ctx, index) {
+                        return GestureDetector(
+                          onTap: () {
+                            if (index == 0) {
+                              Get.to(() => ProfilePage());
+                              //Get.to(() => WomenPage());
+                              //Get.to(() => WaterTracking());
+                            } else if (index == 1) {
+                              Get.to(() => AmcPage());
+                            } else if (index == 2) {
+                              Get.to(() => PaymentOptions());
+                              //Get.to(() => HotDeals());
+                              //Get.to(() => WalkTracking());
+                            } else if (index == 3) {
+                              // whatsAppOpen();
+                              _launchWhatsapp();
 
-                                ///Todo this is showing dark and white mode
-                                ///
-                                //Get.to(() => TheJwelleryStore());
+                              ///Todo this is showing dark and white mode
+                              ///
+                              //Get.to(() => TheJwelleryStore());
 
-                                //Get.to(() => CarouselDemo());
-                              } else if (index == 4) {
-                                Get.to(() => AssociatePage());
-                              } else if (index == 5) {
-                                Get.to(() => BookHolidayPage());
-                              } else if (index == 6) {
-                                Get.to(() => MyHolidayPage());
-                              } else if (index == 7) {
-                                Get.to(() => TermsMemberPage());
-                              }
-                            },
-                            child: PhysicalModel(
-                              color: Colors.grey,
-                              shadowColor: Colors.white,
-                              elevation: 2,
-                              shape: BoxShape.rectangle,
-                              borderRadius: BorderRadius.circular(0),
-                              child: Container(
-                                height: 10.h,
-                                alignment: Alignment.center,
+                              //Get.to(() => CarouselDemo());
+                            } else if (index == 4) {
+                              Get.to(() => AssociatePage());
+                            } else if (index == 5) {
+                              Get.to(() => BookHolidayPage());
+                            } else if (index == 6) {
+                              Get.to(() => MyHolidayPage());
+                            } else if (index == 7) {
+                              Get.to(() => TermsMemberPage());
+                            }
+                          },
+                          child: PhysicalModel(
+                            color: Colors.grey,
+                            shadowColor: Colors.white,
+                            elevation: 2,
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.circular(0),
+                            child: Container(
+                              height: 10.h,
+                              alignment: Alignment.center,
 
-                                //child: Text(myProducts[index]["name"]),
-                                decoration: BoxDecoration(
-                                    color: Colors.white70,
-                                    borderRadius: BorderRadius.circular(0)),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      producticons[index],
-                                      size: 20,
-                                      color: AppColors.themecolors,
-                                    ),
-                                    Text(
-                                      productname[index],
-                                      style: TextStyle(
-                                          color: Colors.grey.shade600,
-                                          fontSize: 9.sp,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  ],
-                                ),
+                              //child: Text(myProducts[index]["name"]),
+                              decoration: BoxDecoration(
+                                  color: AppColors.g10,
+                                  borderRadius: BorderRadius.circular(0)),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    producticons[index],
+                                    size: size.width * 0.09,
+                                    color: Colors.white,
+                                    //AppColors.g11,
+                                    //AppColors.themecolors,
+                                  ),
+                                  Text(
+                                    productname[index],
+                                    style: TextStyle(
+                                        color: Colors.white,
+
+                                        // color: AppColors.g13,
+                                        //Colors.grey.shade600,
+                                        fontSize: 9.sp,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ],
                               ),
                             ),
-                          );
-                        }),
-                  ),
+                          ),
+                        );
+                      }),
                 ),
-                //Spacer(),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 1.w),
-                  child: SizedBox(
-                    height: 17.h,
-                    child: ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        scrollDirection: Axis.horizontal,
-                        itemCount: productname1.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 1.w,
-                              // vertical: 0.h
-                            ),
-                            child: PhysicalModel(
-                              color: Colors.grey,
-                              shadowColor: Colors.white,
-                              elevation: 7,
-                              shape: BoxShape.rectangle,
-                              borderRadius: BorderRadius.circular(0),
-                              child: InkWell(
-                                onTap: () {
-                                  if (index == 0) {
-                                    //Get.to(() => ProfilePage());
-                                    Get.to(() => LoginPage());
-                                    //Get.to(() => WaterTracking());
-                                  } else if (index == 1) {
-                                    Get.to(() => MyVoucherPage());
-                                  } else if (index == 2) {
-                                    Get.defaultDialog(
-                                        title: "",
-                                        //middleText: "",
-                                        backgroundColor: Colors.transparent,
-                                        // titleStyle:
-                                        //     TextStyle(color: Colors.white),
-                                        // middleTextStyle:
-                                        //     TextStyle(color: Colors.white),
-                                        //textConfirm: "Confirm",
-                                        //textCancel: "Cancel",
-                                        //cancelTextColor: Colors.white,
-                                        //confirmTextColor: Colors.white,
-                                        //buttonColor: Colors.red,
-                                        barrierDismissible: true,
-                                        radius: 0,
-                                        content: Column(
+
+                ///..........
+
+                // SizedBox(
+                //   height: 0.3.h,
+                // ),
+
+                ///.......
+                Spacer(),
+                // SizedBox(
+                //   height: 0.03.h,
+                // ),
+                SizedBox(
+                  height: 20.4.h,
+                  width: size.width,
+                  child: ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      itemCount: productname1.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: EdgeInsets.symmetric(
+                              //horizontal: 0.w,
+                              vertical: 0.5.h),
+                          child: PhysicalModel(
+                            color: Colors.black,
+                            shadowColor: Colors.white,
+                            elevation: 4,
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.circular(0),
+                            child: InkWell(
+                              onTap: () {
+                                if (index == 0) {
+                                  //Get.to(() => ProfilePage());
+                                  Get.to(() => LoginPage());
+                                  //Get.to(() => WaterTracking());
+                                } else if (index == 1) {
+                                  Get.to(() => MyVoucherPage());
+                                } else if (index == 2) {
+                                  Get.defaultDialog(
+                                      title: "",
+                                      //middleText: "",
+                                      backgroundColor: Colors.transparent,
+                                      // titleStyle:
+                                      //     TextStyle(color: Colors.white),
+                                      // middleTextStyle:
+                                      //     TextStyle(color: Colors.white),
+                                      //textConfirm: "Confirm",
+                                      //textCancel: "Cancel",
+                                      //cancelTextColor: Colors.white,
+                                      //confirmTextColor: Colors.white,
+                                      //buttonColor: Colors.red,
+                                      barrierDismissible: true,
+                                      radius: 0,
+                                      content: SingleChildScrollView(
+                                        child: Column(
                                           children: [
                                             Container(
-                                              height: 40.h,
+                                              height: 37.h,
                                               width: 100.w,
                                               decoration: BoxDecoration(
                                                   color: Colors.white,
@@ -392,34 +418,40 @@ class HomePage extends StatelessWidget {
                                                   ))),
                                             ),
                                           ],
-                                        ));
-                                    //Get.to(() => HotDeals());
-                                    //Get.to(() => WalkTracking());
-                                  } else if (index == 3) {
-                                    FlutterPhoneDirectCaller.callNumber(
-                                        '+911140193528');
-                                    //launch('tel:7019380053');
-                                    // _launchURLBrowser();
-                                    //launch('tel:+91 7019380052');
-                                    print('call');
+                                        ),
+                                      ));
+                                  //Get.to(() => HotDeals());
+                                  //Get.to(() => WalkTracking());
+                                } else if (index == 3) {
+                                  FlutterPhoneDirectCaller.callNumber(
+                                      '+911140193528');
+                                  //launch('tel:7019380053');
+                                  // _launchURLBrowser();
+                                  //launch('tel:+91 7019380052');
+                                  print('call');
 
-                                    ///Todo this is showing dark and white mode
-                                    ///
-                                    //Get.to(() => TheJwelleryStore());
+                                  ///Todo this is showing dark and white mode
+                                  ///
+                                  //Get.to(() => TheJwelleryStore());
 
-                                    //Get.to(() => CarouselDemo());
-                                  }
-                                },
+                                  //Get.to(() => CarouselDemo());
+                                }
+                              },
+                              child: Padding(
+                                padding:
+                                    EdgeInsets.symmetric(horizontal: 0.5.w),
                                 child: Container(
-                                  //height: 2.h,
-                                  width: 22.5.w,
-                                  color: Colors.white70,
+                                  //height: 12.h,
+                                  width: 24.w,
+                                  color: AppColors.g10,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Icon(
                                         product1icons[index],
-                                        color: AppColors.themecolors,
+                                        color: Colors.white,
+
+                                        //color: AppColors.g12,
                                         size: 26,
                                       ),
                                       SizedBox(
@@ -428,7 +460,9 @@ class HomePage extends StatelessWidget {
                                       Text(
                                         productname1[index],
                                         style: TextStyle(
-                                            color: Colors.grey.shade600,
+                                            color: Colors.white,
+
+                                            //color: AppColors.g12,
                                             fontSize: 9.sp,
                                             fontWeight: FontWeight.w500),
                                       ),
@@ -437,11 +471,14 @@ class HomePage extends StatelessWidget {
                                 ),
                               ),
                             ),
-                          );
-                        }),
-                  ),
+                          ),
+                        );
+                      }),
                 ),
-                //Spacer(),
+                SizedBox(
+                  height: 0.9.h,
+                ),
+                // Spacer(),
                 // SizedBox(
                 //   height: size.height * 0.02,
                 // ),
@@ -450,6 +487,8 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
+
+      ///.............
     );
   }
 }

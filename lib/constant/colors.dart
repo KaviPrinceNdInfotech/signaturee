@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static var themecolors =
-      //Color(0xff25D366);
-      Color(0xff8421A6);
+  //static var themecolors =
+  //Color(0xff25D366);
+  //Color(0xff8421A6);
+  static var themecolors = Color(0xff3bdcf9);
 
   static var golden = Color(0xffDDB37B);
 
@@ -36,11 +37,39 @@ class AppColors {
 
   ///
   static Color g9 = Color(0xfffab23d);
-  static Color g10 = Color(0xffffc812);
+  // static Color g10 = Color(0xff8421A6);
+  //#de9dac
+  static Color g10 = Color(0xff3bdcf9);
+  //DE5D83
+
+  ///red for g10
+  //ff0000
+  //7d0000
+
+  ///travel...
+  //3bdcf9
+  //9cd7e3
+  //fc6c8c
+
+  //static Color g10 = Color(0xff89CFF0);
+
+  //COPIED!
+  //static Color g10 = Color(0xffffc812);
+  //0xffffc872
+  //static Color g10 = Color(0xfffab23d);
+
   static Color g11 = Color(0xff000000);
   static Color g12 = Color(0xff262626);
   static Color g13 = Color(0xff383838);
   static Color g14 = Color(0xfffbfffe);
+
+  ///purple
+  static Color pdeeep = Color(0xff800080);
+  static Color plight = Color(0xffffc0cb);
+  static Color p3 = Color(0xff0000ff);
+  static Color p4 = Color(0xff262626);
+  static Color p5 = Color(0xff383838);
+  static Color p6 = Color(0xfffbfffe);
 }
 
 LinearGradient gradient1 = LinearGradient(
