@@ -1,10 +1,14 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:signature/constant/colors.dart';
-import 'package:signature/view/login/login_page.dart';
+import 'package:signature/utils/acount_service_autologin.dart';
+import 'package:signature/view/home_page/home_pageee.dart';
 import 'package:sizer/sizer.dart';
+
+import '../login/login_page.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -17,10 +21,40 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 5), () {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => LoginPage()));
+
+    accountService.getAccountData.then((accountData) {
+      print("accdatadataa${accountData}");
+
+      Timer(
+        const Duration(seconds: 2),
+        () {
+          if (accountData == null) {
+            print("accdata${accountData}");
+
+            // Future.delayed(Duration(seconds: 5), () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => LoginPage()));
+            // });
+
+            ///todo: 2 sep....2023..
+            throw Exception();
+          } else {
+            print("accdata2${accountData}");
+            Future.delayed(Duration(seconds: 2), () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => HomePage()));
+            });
+
+            ///todo: through exception....
+            throw Exception();
+          }
+        },
+      );
     });
+    // Future.delayed(Duration(seconds: 5), () {
+    //   Navigator.push(
+    //       context, MaterialPageRoute(builder: (context) => LoginPage()));
+    // });
   }
 
   @override

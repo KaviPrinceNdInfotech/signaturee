@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:signature/constant/colors.dart';
 import 'package:signature/view/drower_navigation_page/aboutus/about_us.dart';
 import 'package:signature/view/drower_navigation_page/become_member/become_members.dart';
@@ -19,10 +20,20 @@ import 'package:signature/view/home_page/book_holiday/book_holidayss.dart';
 import 'package:signature/view/home_page/my_holiday/my_holidayss.dart';
 import 'package:signature/view/home_page/profile/profile_page.dart';
 import 'package:signature/view/home_page/terms_member/terms_of_member.dart';
+import 'package:signature/view/login/login_page.dart';
 import 'package:sizer/sizer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../controllers/login_controller.dart';
+import '../controllers/profile_controllers.dart';
+import '../utils/circular_loader.dart';
+import '../view/drower_navigation_page/change_password/change_password.dart';
+
 class MainDrawer extends StatelessWidget {
+  LoginController _loginController = Get.put(LoginController());
+
+  ProfileController _profileController = Get.put(ProfileController());
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -56,55 +67,30 @@ class MainDrawer extends StatelessWidget {
                         child: Image.asset('lib/assets/logo_signature.png'),
                       )),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //crossAxisAlignment: CrossAxisAlignment.stretch,
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Column(
-                          //mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'KUMAR PRINCE',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 8.sp,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 1.h,
-                            ),
-                            Text(
-                              'SAMPLE',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 8.sp,
-                              ),
-                            ),
-                          ],
+                        Text(
+                          "${_profileController.getprofileModel?.memberName1}",
+                          //'KUMAR PRINCE',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                        Column(
-                          //mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '01 Mar 2018',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 8.sp,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 1.h,
-                            ),
-                            Text(
-                              '01 Mar 2028',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 8.sp,
-                              ),
-                            ),
-                          ],
+                        SizedBox(
+                          height: 0.1.h,
+                        ),
+                        Text(
+                          "${_profileController.getprofileModel?.email}",
+
+                          //'SAMPLE',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 9.sp,
+                          ),
                         ),
                       ],
                     ),
@@ -490,6 +476,35 @@ class MainDrawer extends StatelessWidget {
             ListTile(
               horizontalTitleGap: 1.h,
               leading: Icon(
+                FontAwesomeIcons.lockOpen,
+                color: Colors.black,
+                size: 12.sp,
+              ),
+              trailing: Icon(
+                Icons.arrow_forward_ios_sharp,
+                size: 10.sp,
+                color: Colors.black,
+              ),
+              contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+              dense: true,
+              visualDensity: VisualDensity(horizontal: 0, vertical: -2),
+              title: Text(
+                'Change Password',
+                style: TextStyle(fontSize: 9.sp, fontWeight: FontWeight.w600),
+              ),
+              tileColor: Get.currentRoute == '/ChangePasswordPage'
+                  ? Colors.grey[300]
+                  : null,
+              onTap: () {
+                print(Get.currentRoute);
+                Get.back();
+                Get.to(() => ChangePasswordPage());
+                Get.offNamed('/ChangePasswordPage');
+              },
+            ),
+            ListTile(
+              horizontalTitleGap: 1.h,
+              leading: Icon(
                 FontAwesomeIcons.globe,
                 color: Colors.black,
                 size: 12.sp,
@@ -563,10 +578,16 @@ class MainDrawer extends StatelessWidget {
                 style: TextStyle(fontSize: 9.sp, fontWeight: FontWeight.w600),
               ),
               tileColor: Get.currentRoute == '/home' ? Colors.grey[300] : null,
-              onTap: () {
-                print(Get.currentRoute);
-                Get.back();
-                Get.offNamed('/home');
+              onTap: () async {
+                ///....logout
+                _loginController.onInit();
+                CallLoader.loader();
+                await Future.delayed(Duration(seconds: 2));
+                CallLoader.hideLoader();
+                await SharedPreferences.getInstance()
+                    .then((value) => value.clear());
+                //Get.back();
+                await Get.offAll(() => LoginPage());
               },
             ),
           ],

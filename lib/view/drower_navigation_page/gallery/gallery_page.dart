@@ -1,10 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:signature/constant/colors.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../controllers/gallary_controller.dart';
+
 class Gallerys extends StatelessWidget {
   Gallerys({Key? key}) : super(key: key);
+
+  GellaryController _gellaryController = Get.put(GellaryController());
   final List<String> images = [
     "https://images.unsplash.com/photo-1606046604972-77cc76aee944?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8aG90ZWxzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
     "https://images.unsplash.com/photo-1596436889106-be35e843f974?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGhvdGVsc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
@@ -17,6 +23,8 @@ class Gallerys extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var imgpath = 'https://new.signatureresorts.in/Images/';
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.themecolors,
@@ -29,34 +37,48 @@ class Gallerys extends StatelessWidget {
           ),
         ),
       ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 87.5.h,
-              child: ListView.builder(
-                  itemCount: images.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(2.0),
-                      child: Container(
-                        height: 30.h,
-                        width: 100.w,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.red),
-                          color: Colors.purple,
-                          image: DecorationImage(
-                              image: NetworkImage(
-                                images[index],
-                              ),
-                              fit: BoxFit.fill),
+      body: Obx(
+        () => (_gellaryController.isLoading.value)
+            ? Center(child: CircularProgressIndicator())
+            : _gellaryController.gelleryModel?.gallery == null
+                ? Center(
+                    child: Text('No Data'),
+                  )
+                : SafeArea(
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 87.5.h,
+                          child: ListView.builder(
+                              itemCount: _gellaryController
+                                  .gelleryModel?.gallery?.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                final items =
+                                    _gellaryController.gelleryModel?.gallery;
+                                return Padding(
+                                  padding: const EdgeInsets.all(2.0),
+                                  child: Container(
+                                    height: 30.h,
+                                    width: 100.w,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.red),
+                                        color: Colors.purple,
+                                        image: DecorationImage(
+                                            image: NetworkImage(
+                                                '$imgpath${items?[index].imageName}' ??
+                                                    ''),
+                                            fit: BoxFit.cover,
+                                            onError: (error, stackTrace) {
+                                              Text("No Image Found");
+                                              // .log(error, stackTrace);
+                                            })),
+                                  ),
+                                );
+                              }),
                         ),
-                      ),
-                    );
-                  }),
-            ),
-          ],
-        ),
+                      ],
+                    ),
+                  ),
       ),
     );
   }

@@ -1,10 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:signature/constant/colors.dart';
+import 'package:signature/controllers/rozarpay_controller.dart';
 import 'package:sizer/sizer.dart';
 
 class PaymentOptions extends StatelessWidget {
   PaymentOptions({Key? key}) : super(key: key);
+
+  final RozarPayController _rozarPayController = Get.put(RozarPayController());
+  //_rozarPayController.openCheckout();
   final List<String> paymentmethod = [
     'Utility',
     'EMI',
@@ -59,22 +65,27 @@ class PaymentOptions extends StatelessWidget {
                               color: Colors.red,
                               shadowColor: Colors.red,
                               borderRadius: BorderRadius.circular(3),
-                              child: Container(
-                                height: 8.h,
-                                width: 30.w,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border:
-                                      Border.all(color: Colors.grey.shade300),
-                                  borderRadius: BorderRadius.circular(3),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'Utility',
-                                    style: TextStyle(
-                                      color: AppColors.themecolors,
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.bold,
+                              child: InkWell(
+                                onTap: () {
+                                  _rozarPayController.openCheckout();
+                                },
+                                child: Container(
+                                  height: 8.h,
+                                  width: 30.w,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border:
+                                        Border.all(color: Colors.grey.shade300),
+                                    borderRadius: BorderRadius.circular(3),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'Utility',
+                                      style: TextStyle(
+                                        color: AppColors.themecolors,
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -88,22 +99,27 @@ class PaymentOptions extends StatelessWidget {
                               color: Colors.red,
                               shadowColor: Colors.red,
                               borderRadius: BorderRadius.circular(3),
-                              child: Container(
-                                height: 8.h,
-                                width: 30.w,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border:
-                                      Border.all(color: Colors.grey.shade300),
-                                  borderRadius: BorderRadius.circular(3),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'EMI',
-                                    style: TextStyle(
-                                      color: AppColors.themecolors,
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.bold,
+                              child: InkWell(
+                                onTap: () {
+                                  _rozarPayController.openCheckout();
+                                },
+                                child: Container(
+                                  height: 8.h,
+                                  width: 30.w,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border:
+                                        Border.all(color: Colors.grey.shade300),
+                                    borderRadius: BorderRadius.circular(3),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'EMI',
+                                      style: TextStyle(
+                                        color: AppColors.themecolors,
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -122,22 +138,27 @@ class PaymentOptions extends StatelessWidget {
                               color: Colors.red,
                               shadowColor: Colors.red,
                               borderRadius: BorderRadius.circular(3),
-                              child: Container(
-                                height: 8.h,
-                                width: 30.w,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border:
-                                      Border.all(color: Colors.grey.shade300),
-                                  borderRadius: BorderRadius.circular(3),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'Exchange',
-                                    style: TextStyle(
-                                      color: AppColors.themecolors,
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.bold,
+                              child: InkWell(
+                                onTap: () {
+                                  _rozarPayController.openCheckout();
+                                },
+                                child: Container(
+                                  height: 8.h,
+                                  width: 30.w,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border:
+                                        Border.all(color: Colors.grey.shade300),
+                                    borderRadius: BorderRadius.circular(3),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'Exchange',
+                                      style: TextStyle(
+                                        color: AppColors.themecolors,
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -151,22 +172,27 @@ class PaymentOptions extends StatelessWidget {
                               color: Colors.red,
                               shadowColor: Colors.red,
                               borderRadius: BorderRadius.circular(3),
-                              child: Container(
-                                height: 8.h,
-                                width: 30.w,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border:
-                                      Border.all(color: Colors.grey.shade300),
-                                  borderRadius: BorderRadius.circular(3),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'Others',
-                                    style: TextStyle(
-                                      color: AppColors.themecolors,
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.bold,
+                              child: InkWell(
+                                onTap: () {
+                                  _rozarPayController.openCheckout();
+                                },
+                                child: Container(
+                                  height: 8.h,
+                                  width: 30.w,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border:
+                                        Border.all(color: Colors.grey.shade300),
+                                    borderRadius: BorderRadius.circular(3),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'Others',
+                                      style: TextStyle(
+                                        color: AppColors.themecolors,
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                 ),
