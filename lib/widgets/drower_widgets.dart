@@ -13,6 +13,7 @@ import 'package:signature/view/drower_navigation_page/faq/faq_pages.dart';
 import 'package:signature/view/drower_navigation_page/gallery/gallery_page.dart';
 import 'package:signature/view/drower_navigation_page/my_aggrements/my_aggrements.dart';
 import 'package:signature/view/drower_navigation_page/payment_history/payment_history.dart';
+import 'package:signature/view/drower_navigation_page/share_friends/share_friendsss.dart';
 import 'package:signature/view/drower_navigation_page/website/website_page.dart';
 import 'package:signature/view/home_page/amc/amc_page.dart';
 import 'package:signature/view/home_page/associate_restorent/assosiate_restorent.dart';
@@ -412,7 +413,8 @@ class MainDrawer extends StatelessWidget {
               onTap: () {
                 print(Get.currentRoute);
                 Get.back();
-                _launchWhatsapp();
+                Get.to(Sharelinkweight());
+                // _launchWhatsapp();
                 Get.offNamed('/home');
               },
             ),

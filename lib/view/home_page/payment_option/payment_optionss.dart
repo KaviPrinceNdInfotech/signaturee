@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:signature/constant/colors.dart';
 import 'package:signature/controllers/rozarpay_controller.dart';
+import 'package:signature/view/payment_post_page/post_payment_pagee.dart';
 import 'package:sizer/sizer.dart';
 
 class PaymentOptions extends StatelessWidget {
@@ -67,7 +68,8 @@ class PaymentOptions extends StatelessWidget {
                               borderRadius: BorderRadius.circular(3),
                               child: InkWell(
                                 onTap: () {
-                                  _rozarPayController.openCheckout();
+                                  Get.to(Post_payment_pagge());
+                                  // _rozarPayController.openCheckout();
                                 },
                                 child: Container(
                                   height: 8.h,
@@ -101,7 +103,9 @@ class PaymentOptions extends StatelessWidget {
                               borderRadius: BorderRadius.circular(3),
                               child: InkWell(
                                 onTap: () {
-                                  _rozarPayController.openCheckout();
+                                  Get.to(Post_payment_pagge());
+
+                                  //_rozarPayController.openCheckout();
                                 },
                                 child: Container(
                                   height: 8.h,
@@ -140,7 +144,8 @@ class PaymentOptions extends StatelessWidget {
                               borderRadius: BorderRadius.circular(3),
                               child: InkWell(
                                 onTap: () {
-                                  _rozarPayController.openCheckout();
+                                  Get.to(Post_payment_pagge());
+                                  //_rozarPayController.openCheckout();
                                 },
                                 child: Container(
                                   height: 8.h,
@@ -174,7 +179,8 @@ class PaymentOptions extends StatelessWidget {
                               borderRadius: BorderRadius.circular(3),
                               child: InkWell(
                                 onTap: () {
-                                  _rozarPayController.openCheckout();
+                                  Get.to(Post_payment_pagge());
+                                  // _rozarPayController.openCheckout();
                                 },
                                 child: Container(
                                   height: 8.h,

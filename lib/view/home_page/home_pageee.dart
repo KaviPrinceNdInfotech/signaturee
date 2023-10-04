@@ -14,6 +14,7 @@ import 'package:signature/controllers/amc_detailcontroller.dart';
 import 'package:signature/controllers/associate_resort_controllers.dart';
 import 'package:signature/controllers/login_controller.dart';
 import 'package:signature/controllers/profile_controllers.dart';
+import 'package:signature/view/drower_navigation_page/share_friends/share_friendsss.dart';
 import 'package:signature/view/home_page/amc/amc_page.dart';
 import 'package:signature/view/home_page/book_holiday/book_holiday_controller.dart';
 import 'package:signature/view/home_page/book_holiday/book_holidayss.dart';
@@ -251,8 +252,8 @@ class HomePage extends StatelessWidget {
                           //Get.to(() => WalkTracking());
                         } else if (index == 3) {
                           // whatsAppOpen();
-                          _launchWhatsapp();
-
+                          Get.to(Sharelinkweight());
+                          //  _launchWhatsapp();
                           ///Todo this is showing dark and white mode
                           ///
                           //Get.to(() => TheJwelleryStore());

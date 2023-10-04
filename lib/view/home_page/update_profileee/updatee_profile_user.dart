@@ -174,7 +174,7 @@ class UpdateProfilePage extends StatelessWidget {
                               //       color: Colors.red,
                               //       width: 1,
                               //     )),
-                              hintText: 'Enter New password',
+                              hintText: 'Enter Your email',
                               hintStyle: TextStyle(
                                   color: Colors.grey,
                                   fontSize: 10.sp,
