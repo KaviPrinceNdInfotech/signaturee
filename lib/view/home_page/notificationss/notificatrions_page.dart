@@ -31,41 +31,43 @@ class NotificationPage extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 88.5.h,
-              child: ListView.builder(
-                  itemCount: notification.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(2.0),
-                      child: PhysicalModel(
-                        elevation: 4,
-                        shadowColor: Colors.white,
-                        color: Colors.grey,
-                        child: Container(
-                          height: 7.h,
-                          width: 100.w,
-                          decoration: BoxDecoration(
-                            color: AppColors.golden,
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              notification[index],
-                              style: TextStyle(
-                                color: AppColors.themecolors,
-                                fontSize: 8.sp,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 88.5.h,
+                child: ListView.builder(
+                    itemCount: notification.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: PhysicalModel(
+                          elevation: 4,
+                          shadowColor: Colors.white,
+                          color: Colors.grey,
+                          child: Container(
+                            height: 7.h,
+                            width: 100.w,
+                            decoration: BoxDecoration(
+                              color: AppColors.black,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                notification[index],
+                                style: TextStyle(
+                                  color: AppColors.themecolors,
+                                  fontSize: 8.sp,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    );
-                  }),
-            )
-          ],
+                      );
+                    }),
+              )
+            ],
+          ),
         ),
       ),
     );

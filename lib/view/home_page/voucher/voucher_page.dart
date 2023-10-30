@@ -2,9 +2,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:signature/constant/colors.dart';
 import 'package:sizer/sizer.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../../../utils/circular_loader.dart';
 
 class MyVoucherPage extends StatelessWidget {
   MyVoucherPage({Key? key}) : super(key: key);
+
+  _launchURLApp() async {
+    var url = Uri.parse("https://www.facebook.com/SignatureClubResort/");
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   final List<String> images = [
     'https://mpng.subpng.com/20180503/ere/kisspng-amazon-echo-amazon-com-amazon-alexa-amazon-key-ama-5aeaa256914871.1490533415253264225951.jpg',
@@ -56,9 +68,10 @@ class MyVoucherPage extends StatelessWidget {
                 SizedBox(
                   height: 2.h,
                 ),
-                SizedBox(
-                  height: 85.h,
+                Expanded(
+                  flex: 2,
                   child: GridView.builder(
+                    shrinkWrap: true,
                     gridDelegate:
                         const SliverGridDelegateWithMaxCrossAxisExtent(
                             maxCrossAxisExtent: 170,
@@ -84,15 +97,51 @@ class MyVoucherPage extends StatelessWidget {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Container(
-                                  height: 8.h,
-                                  width: 18.w,
-                                  decoration: BoxDecoration(
-                                    color: Colors.orange,
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                        image: NetworkImage(images[index]),
-                                        fit: BoxFit.cover),
+                                InkWell(
+                                  onTap: () async {
+                                    // launch('https://www.amazon.in/'
+                                    //     //'https://www.linkedin.com/in/signature-resorts-8ba080175/?original_referer=https%3A%2F%2Fwww%2Egoogle%2Ecom%2F&originalSubdomain=in'
+                                    //     //'mailto:rajatrrpalankar@gmail.com?subject=This is Subject Title&body=This is Body of Email'
+                                    //     );
+                                    if (index == 0) {
+                                      ///....logout
+                                      // launch('https://www.amazon.in/'
+                                      //   );
+                                      await Future.delayed(
+                                          Duration(seconds: 1));
+                                      CallLoader.hideLoader();
+                                      await launch('https://www.amazon.in/');
+                                      //  await SharedPreferences.getInstance()
+                                      //.then((value) => value.clear());
+                                      //Get.back();
+                                      // await Get.offAll(() => LoginPage());
+                                      //Get.to(() => ProfilePage());
+                                      // Get.to(() => LoginPage());
+                                      //Get.to(() => WaterTracking());
+                                    } else if (index == 1) {
+                                      await launch('https://online.kfc.co.in/');
+                                    } else if (index == 2) {
+                                      await launch('https://www.nike.com/in/');
+                                    } else if (index == 3) {
+                                      await launch('https://www.amazon.in/');
+                                    } else if (index == 4) {
+                                      await launch('https://www.airbnb.co.in/');
+                                    } else if (index == 5) {
+                                      await launch('https://online.kfc.co.in/');
+                                    } else if (index == 6) {
+                                      await launch('https://www.amazon.in/');
+                                    }
+                                  },
+                                  child: Container(
+                                    height: 8.h,
+                                    width: 18.w,
+                                    decoration: BoxDecoration(
+                                      color: Colors.orange,
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                          image: NetworkImage(images[index]),
+                                          fit: BoxFit.cover),
+                                    ),
                                   ),
                                 ),
                                 Text(

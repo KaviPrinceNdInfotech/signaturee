@@ -55,5 +55,7 @@
       <string>whatsapp</string>
     </array>
 
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
 </dict>
 </plist>

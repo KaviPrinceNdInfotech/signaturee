@@ -4,10 +4,13 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:signature/model/amc_detail_model.dart';
+import 'package:signature/model/emi_due_payment.dart';
 import 'package:signature/model/gellery_model.dart';
 import 'package:signature/model/get_associate_model.dart';
 import 'package:signature/model/my_vacation_model.dart';
+import 'package:signature/model/payment_history_model.dart';
 import 'package:signature/model/profile_model.dart';
 import 'package:signature/model/terms_membership_model.dart';
 import 'package:signature/view/home_page/home_pageee.dart';
@@ -342,4 +345,124 @@ class ApiProvider {
       return r;
     }
   }
+
+  ///12.amc details apis.....................
+  static AmcDueapi() async {
+    var prefs = GetStorage();
+
+    //saved userid..........
+    //prefs.write("Id".toString(), json.decode(r.body)['Id']);
+    userid = prefs.read("Id").toString();
+    print('wwwuseridEsfsaE:${userid}');
+    var url = baseUrl + 'CommonApi/GetUserEmi?userid=$userid';
+    try {
+      http.Response r = await http.get(Uri.parse(url));
+      if (r.statusCode == 200) {
+        EmiDueModel? emiDueModel = emiDueModelFromJson(r.body);
+        print("amcduedetail : ${emiDueModel.emi?[0]?.id}");
+        return emiDueModel;
+      }
+    } catch (error) {
+      print('amcdetazxcileror: $error');
+      return;
+    }
+  }
+
+  ///13.post_payment__api.................
+  static PostPaymentApi() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    var AmcdueId = preferences.getString("AmcdueId");
+    print("AmcdueId: ${AmcdueId}");
+    var prefs = GetStorage();
+    userid = prefs.read("Id").toString();
+    print('EEeeewasdsadsasDSA:${AmcdueId}');
+    var url = baseUrl + 'CommonApi/PayEmi';
+    var body = {
+      "Id": AmcdueId,
+    };
+    print(body);
+    http.Response r = await http.post(
+      Uri.parse(url),
+      body: body,
+    );
+
+    ///todo:ttddiiiiidddddffddf.................................
+    print('EEeeewasdsadsasDSAbodyy:${r.body}');
+
+    ///todo:fdgfdmvfdkfvkdvmkvkmv..............................................
+    //print(r.body);
+    if (r.statusCode == 200) {
+      print('Eeeewasdsadsasdstodo:${AmcdueId}');
+      print('Eeeewasdsadsasdstodosdsdsssds:${AmcdueId}');
+
+      ///..............................................................
+      Get.to(() => HomePage());
+
+      ///.....................................................
+      /// print('Eeeewasdsadsasdstodosdsdsssds:${AmcdueId}');
+      return r;
+    } else if (r.statusCode == 401) {
+      Get.snackbar('Message', r.body);
+    } else {
+      Get.snackbar('Message', r.body);
+      return r;
+    }
+  }
+
+  ///14.payment.......history........
+
+  static PaymentHistoryApi() async {
+    var prefs = GetStorage();
+
+    //saved userid..........
+    //prefs.write("Id".toString(), json.decode(r.body)['Id']);
+    userid = prefs.read("Id").toString();
+    print('wwwuseridEsfsaEsasa:${userid}');
+    var url = baseUrl + 'CommonApi/PaymentHistory?userid=$userid';
+    try {
+      http.Response r = await http.get(Uri.parse(url));
+      if (r.statusCode == 200) {
+        PaymentHisModel? paymenthisModel = paymentHisModelFromJson(r.body);
+        print("amcduedetailmodeel : ${paymenthisModel.data?[0]?.balance}");
+        return paymenthisModel;
+      }
+    } catch (error) {
+      print('amcdetazxcilerorss: $error');
+      return;
+    }
+  }
+
+  ///15.become member...................
+  static BecomeMenberApi(
+      var Name, var Email, var Mobile, var Duration, var Description) async {
+    var prefs = GetStorage();
+    userid = prefs.read("Id").toString();
+    print('EEeeewasdsads:${userid}');
+    var url = baseUrl + 'CommonApi/BecomeMember';
+    var body = {
+      "UserId": "$userid",
+      "Name": "$Name",
+      "Email": "$Email",
+      "Mobile": "$Mobile",
+      "Duration": "$Duration",
+      "Description": "$Description"
+    };
+    print(body);
+    http.Response r = await http.post(
+      Uri.parse(url),
+      body: body,
+    );
+    print(r.body);
+    if (r.statusCode == 200) {
+      Get.to(() => HomePage());
+      return r;
+    } else if (r.statusCode == 401) {
+      Get.snackbar('Message', r.body);
+    } else {
+      Get.snackbar('Message', r.body);
+      return r;
+    }
+  }
 }
+
+//https://new.signatureresorts.in/api/CommonApi/PayEmi

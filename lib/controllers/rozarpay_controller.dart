@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:signature/controllers/post_payment_emi_report.dart';
 import 'package:signature/controllers/profile_controllers.dart';
 
 //import '../post_order_controller/post_order_controller.dart';
@@ -9,6 +11,8 @@ class RozarPayController extends GetxController {
   //get isLoading => null;
 
   RxBool isLoading = false.obs;
+  PostPaymentttController _postPaymentttController =
+      Get.put(PostPaymentttController());
   //final CartController controller = Get.put(CartController());
   ProfileController _getProfileController = Get.put(ProfileController());
   // CheckoutController _checkoutController = Get.put(CheckoutController());
@@ -32,10 +36,14 @@ class RozarPayController extends GetxController {
   }
 
   void openCheckout() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    var Amcduepayment = preferences.getString("Amcduepayment");
+    print("Fee545454eeedrramkunt: ${Amcduepayment}");
+
     var options = {
-      // 'key': 'rzp_live_sTN4TNvGmEs3C1',
-      'key': 'rzp_test_aeRns0u8gPpOUK',
-      'amount': int.parse("100") * 100,
+      'key': 'rzp_live_ltkMYFl7PwVGM9',
+      //'key': 'rzp_test_aeRns0u8gPpOUK',
+      'amount': double.parse("${Amcduepayment}") * 100,
 
       ///todo........................new..........................28 feb............
       // '${_checkoutController.checkoutModel?.result?.totalCost.toString()}') * 100,
@@ -71,21 +79,19 @@ class RozarPayController extends GetxController {
     Get.snackbar("SUCCESS", "ID: ${response.paymentId}");
     print('payment sucess');
 
-    // Get.to(OrderConfirmationPage());
-    ///todo: post order apii....
-
-    // _postOrderController.postOrderApi().then((statusCode) {
-    //   if (statusCode == 200) {
-    //     ///This is the main thing to provide updated list history...
-    //     _getProfileController.OrderHistoryApi();
-    //
-    //     ///nov 14....................................
-    //     Get.to(OrderConfirmationPage());
-    //     _getProfileController.update();
-    //   } else {
-    //     // SHow
-    //   }
-    // });
+    _postPaymentttController.postpaymentttApi().then((statusCode) {
+      // if (statusCode == 200) {
+      //   ///This is the main thing to provide updated list history...
+      //   //_medicineHistoryController.medicineorderhistoryApi();
+      //
+      //   ///nov 14....................................
+      //   // Get.to(LabHistoryUser());
+      //   Get.to(UserHomePage());
+      //   _medicineHistoryController.update();
+      // } else {
+      //   // SHow
+      // }
+    });
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {

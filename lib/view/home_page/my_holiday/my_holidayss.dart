@@ -214,11 +214,35 @@ class MyHolidayPage extends StatelessWidget {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      '',
+                                      'SI NO.',
                                       style: TextStyle(
                                         fontWeight: FontWeight.w500,
                                         color: Colors.black,
-                                        fontSize: 10.sp,
+                                        fontSize: 8.sp,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Checking date.',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.black,
+                                        fontSize: 8.sp,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Checkout date.',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.black,
+                                        fontSize: 8.sp,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Detail',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.black,
+                                        fontSize: 8.sp,
                                       ),
                                     ),
                                     Text(
@@ -243,12 +267,13 @@ class MyHolidayPage extends StatelessWidget {
                                   //shadowColor: AppColors.golden,
                                   elevation: 0,
                                   child: Container(
-                                    height: 83.h,
+                                    height: 79.h,
                                     width: 100.w,
                                     decoration: BoxDecoration(
                                       color: Colors.white70,
                                     ),
                                     child: ListView.builder(
+                                        shrinkWrap: true,
                                         //physics: NeverScrollableScrollPhysics(),
                                         itemCount: _myvacationController
                                             .myVacationModel
@@ -504,7 +529,7 @@ class MyHolidayPage extends StatelessWidget {
                                                               style: TextStyle(
                                                                 color: Colors
                                                                     .black,
-                                                                fontSize: 11.sp,
+                                                                fontSize: 9.sp,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w700,

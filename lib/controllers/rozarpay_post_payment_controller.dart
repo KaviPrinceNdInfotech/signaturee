@@ -40,8 +40,8 @@ class RozarPostPaymentController extends GetxController {
 //int.parse(amount != null ? amount : '0');
   void openCheckout() async {
     var options = {
-      // 'key': 'rzp_live_sTN4TNvGmEs3C1',
-      'key': 'rzp_test_aeRns0u8gPpOUK',
+      'key': 'rzp_live_ltkMYFl7PwVGM9',
+      //'key': 'rzp_test_aeRns0u8gPpOUK',
       'amount':
           //100*100,
 

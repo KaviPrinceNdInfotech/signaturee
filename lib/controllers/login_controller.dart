@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:signature/controllers/profile_controllers.dart';
 import 'package:signature/services_apis/services_api.dart';
 import 'package:signature/view/home_page/home_pageee.dart';
 
@@ -8,6 +9,8 @@ import '../model/auto_login_account_model.dart';
 import '../utils/acount_service_autologin.dart';
 
 class LoginController extends GetxController {
+  ProfileController _profileController = Get.put(ProfileController());
+
   RxBool isLoading = false.obs;
   final GlobalKey<FormState> Loginformkey =
       GlobalKey(debugLabel: "Loginformkey");
@@ -22,6 +25,9 @@ class LoginController extends GetxController {
       passwordController.text,
     );
     if (r.statusCode == 200) {
+      await _profileController.profileApi();
+      _profileController.update();
+      _profileController.onInit();
       final accountData = messageFromJson(r.body);
       print("ACCOUNT ${accountData.toJson()}");
       await accountService.setAccountData(accountData);

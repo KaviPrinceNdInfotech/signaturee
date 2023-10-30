@@ -118,7 +118,7 @@ class AmcPage extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    'Year',
+                                    'SI.No',
                                     style: TextStyle(
                                       fontWeight: FontWeight.w500,
                                       color: Colors.white,
@@ -304,14 +304,14 @@ class AmcPage extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 1.h,
+                                  height: 0.5.h,
                                 ),
                                 PhysicalModel(
                                   color: Colors.white70,
                                   shadowColor: AppColors.golden,
                                   elevation: 0,
                                   child: Container(
-                                    height: 18.h,
+                                    height: 17.h,
                                     width: 100.w,
                                     decoration: BoxDecoration(
                                       color: Colors.white70,

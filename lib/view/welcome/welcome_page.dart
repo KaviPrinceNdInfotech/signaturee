@@ -3,15 +3,18 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:signature/constant/colors.dart';
 import 'package:signature/utils/acount_service_autologin.dart';
 import 'package:signature/view/home_page/home_pageee.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../controllers/profile_controllers.dart';
 import '../login/login_page.dart';
 
 class WelcomePage extends StatefulWidget {
-  const WelcomePage({Key? key}) : super(key: key);
+  WelcomePage({Key? key}) : super(key: key);
 
   @override
   State<WelcomePage> createState() => _WelcomePageState();
@@ -21,16 +24,17 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   void initState() {
     super.initState();
+    ProfileController _profileController = Get.put(ProfileController());
 
     accountService.getAccountData.then((accountData) {
       print("accdatadataa${accountData}");
 
       Timer(
         const Duration(seconds: 2),
-        () {
+        () async {
           if (accountData == null) {
+            await _profileController.profileApi();
             print("accdata${accountData}");
-
             // Future.delayed(Duration(seconds: 5), () {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => LoginPage()));
@@ -39,8 +43,9 @@ class _WelcomePageState extends State<WelcomePage> {
             ///todo: 2 sep....2023..
             throw Exception();
           } else {
+            await _profileController.profileApi();
             print("accdata2${accountData}");
-            Future.delayed(Duration(seconds: 2), () {
+            await Future.delayed(Duration(seconds: 2), () {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => HomePage()));
             });

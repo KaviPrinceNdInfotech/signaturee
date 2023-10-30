@@ -1,7 +1,6 @@
 // To parse this JSON data, do
 //
 //     final amcdetailModel = amcdetailModelFromJson(jsonString);
-
 import 'dart:convert';
 
 AmcdetailModel amcdetailModelFromJson(String str) =>

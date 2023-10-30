@@ -76,12 +76,12 @@ class AssociatePage extends StatelessWidget {
                         SizedBox(
                           height: 0.0.h,
                         ),
-                        PhysicalModel(
-                          color: Colors.white70,
-                          //shadowColor: AppColors.golden,
-                          elevation: 2,
-                          child: SizedBox(
-                            height: 87.h,
+                        Expanded(
+                          flex: 2,
+                          child: PhysicalModel(
+                            color: Colors.white70,
+                            //shadowColor: AppColors.golden,
+                            elevation: 2,
                             child: ListView.builder(
                                 shrinkWrap: true,
                                 //physics: NeverScrollableScrollPhysics(),

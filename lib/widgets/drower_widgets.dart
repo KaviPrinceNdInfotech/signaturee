@@ -14,7 +14,6 @@ import 'package:signature/view/drower_navigation_page/gallery/gallery_page.dart'
 import 'package:signature/view/drower_navigation_page/my_aggrements/my_aggrements.dart';
 import 'package:signature/view/drower_navigation_page/payment_history/payment_history.dart';
 import 'package:signature/view/drower_navigation_page/share_friends/share_friendsss.dart';
-import 'package:signature/view/drower_navigation_page/website/website_page.dart';
 import 'package:signature/view/home_page/amc/amc_page.dart';
 import 'package:signature/view/home_page/associate_restorent/assosiate_restorent.dart';
 import 'package:signature/view/home_page/book_holiday/book_holidayss.dart';
@@ -26,14 +25,18 @@ import 'package:sizer/sizer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../controllers/login_controller.dart';
+import '../controllers/payment_history_controller.dart';
 import '../controllers/profile_controllers.dart';
 import '../utils/circular_loader.dart';
 import '../view/drower_navigation_page/change_password/change_password.dart';
+import '../view/home_page/web_view_testing/web_view_testing.dart';
 
 class MainDrawer extends StatelessWidget {
   LoginController _loginController = Get.put(LoginController());
 
   ProfileController _profileController = Get.put(ProfileController());
+  PaymentDetailController _paymentcontroller =
+      Get.put(PaymentDetailController());
 
   @override
   Widget build(BuildContext context) {
@@ -61,10 +64,10 @@ class MainDrawer extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       backgroundColor: Colors.white,
-                      radius: size.height * 0.05,
+                      radius: size.height * 0.04,
                       child: Center(
                           child: Padding(
-                        padding: const EdgeInsets.all(5.0),
+                        padding: const EdgeInsets.all(4.0),
                         child: Image.asset('lib/assets/logo_signature.png'),
                       )),
                     ),
@@ -72,12 +75,13 @@ class MainDrawer extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        // Spacer(),
                         Text(
                           "${_profileController.getprofileModel?.memberName1}",
                           //'KUMAR PRINCE',
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 10.sp,
+                            fontSize: 9.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -267,11 +271,14 @@ class MainDrawer extends StatelessWidget {
               tileColor: Get.currentRoute == '/PaymentHistory'
                   ? Colors.grey[300]
                   : null,
-              onTap: () {
-                print(Get.currentRoute);
+              onTap: () async {
+                await _paymentcontroller.paymentdetailApi();
+                _paymentcontroller.onInit();
+                _paymentcontroller.update();
+                //  print(Get.currentRoute);
                 Get.back();
-                Get.to(() => PaymentHistory());
-                Get.offNamed('/PaymentHistory');
+                await Get.to(() => PaymentHistory());
+                // Get.offNamed('/PaymentHistory');
               },
             ),
             ListTile(
@@ -528,7 +535,12 @@ class MainDrawer extends StatelessWidget {
               onTap: () {
                 print(Get.currentRoute);
                 Get.back();
-                Get.to(() => WebsitePage());
+
+                /// WebView(initialUrl: 'https://www.google.com');
+                ///
+                Get.to(() => WebsitePage2());
+
+                //Get.to(() => WebsitePage());
                 Get.offNamed('/WebsitePage');
               },
             ),

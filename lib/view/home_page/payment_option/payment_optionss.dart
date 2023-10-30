@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:signature/constant/colors.dart';
+import 'package:signature/controllers/amc_detailcontroller.dart';
 import 'package:signature/controllers/rozarpay_controller.dart';
+import 'package:signature/view/home_page/emi_amc_details/emi_amc_page.dart';
 import 'package:signature/view/payment_post_page/post_payment_pagee.dart';
 import 'package:sizer/sizer.dart';
 
@@ -11,6 +13,9 @@ class PaymentOptions extends StatelessWidget {
   PaymentOptions({Key? key}) : super(key: key);
 
   final RozarPayController _rozarPayController = Get.put(RozarPayController());
+
+  AmcDetailController _amcDetailController = Get.put(AmcDetailController());
+
   //_rozarPayController.openCheckout();
   final List<String> paymentmethod = [
     'Utility',
@@ -102,8 +107,11 @@ class PaymentOptions extends StatelessWidget {
                               shadowColor: Colors.red,
                               borderRadius: BorderRadius.circular(3),
                               child: InkWell(
-                                onTap: () {
-                                  Get.to(Post_payment_pagge());
+                                onTap: () async {
+                                  await _amcDetailController.amcdueApi();
+                                  await Get.to(EmiAmcPage());
+
+                                  ///Get.to(Post_payment_pagge());
 
                                   //_rozarPayController.openCheckout();
                                 },
