@@ -67,7 +67,7 @@ class HomePage extends StatelessWidget {
   final List<IconData> producticons = [
     Icons.person_rounded,
     Icons.request_quote_outlined,
-    Icons.cases,
+    Icons.currency_rupee,
     Icons.share_outlined,
     Icons.home_work,
     Icons.holiday_village,
@@ -223,17 +223,21 @@ class HomePage extends StatelessWidget {
                     child: Mycrusial(),
                   ),
                 ),
-                Spacer(),
+                //Spacer(),
                 GridView.builder(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     gridDelegate:
                         const SliverGridDelegateWithMaxCrossAxisExtent(
                       maxCrossAxisExtent: 300,
+                      //  childAspectRatio: 5 / 9,
+
                       childAspectRatio: 5 / 9,
                       crossAxisSpacing: 5,
                       mainAxisSpacing: 5,
-                      mainAxisExtent: 60 + 15.4,
+                      mainAxisExtent: 60 + 17.4,
+
+                      // mainAxisExtent: 60 + 15.4,
                     ),
                     itemCount: productname.length,
                     itemBuilder: (BuildContext ctx, index) {
@@ -298,7 +302,7 @@ class HomePage extends StatelessWidget {
                               children: [
                                 Icon(
                                   producticons[index],
-                                  size: size.width * 0.09,
+                                  size: size.height * 0.04,
                                   color: Colors.white,
                                   //AppColors.g11,
                                   //AppColors.themecolors,
@@ -310,7 +314,7 @@ class HomePage extends StatelessWidget {
 
                                       // color: AppColors.g13,
                                       //Colors.grey.shade600,
-                                      fontSize: 9.sp,
+                                      fontSize: size.height * 0.016,
                                       fontWeight: FontWeight.w500),
                                 ),
                               ],
@@ -319,7 +323,10 @@ class HomePage extends StatelessWidget {
                         ),
                       );
                     }),
-                Spacer(),
+                SizedBox(
+                  height: size.height * 0.004,
+                ),
+                //Spacer(),
 
                 ///..........
 
@@ -332,7 +339,7 @@ class HomePage extends StatelessWidget {
                 //   height: 0.03.h,
                 // ),
                 Expanded(
-                  flex: 40,
+                  flex: 20,
                   child: ListView.builder(
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
@@ -342,11 +349,11 @@ class HomePage extends StatelessWidget {
                         return Padding(
                           padding: EdgeInsets.symmetric(
                               //horizontal: 0.w,
-                              vertical: 0.1.h),
+                              vertical: 0.05.h),
                           child: PhysicalModel(
-                            color: Colors.black,
-                            shadowColor: Colors.white,
-                            elevation: 4,
+                            color: Colors.black38,
+                            //shadowColor: Colors.white,
+                            elevation: 2,
                             shape: BoxShape.rectangle,
                             borderRadius: BorderRadius.circular(0),
                             child: InkWell(
@@ -387,13 +394,13 @@ class HomePage extends StatelessWidget {
                                           children: [
                                             Container(
                                               height: 37.h,
-                                              width: 100.w,
+                                              width: 95.w,
                                               decoration: BoxDecoration(
                                                   color: Colors.white,
                                                   border: Border.all(
                                                       color:
                                                           AppColors.themecolors,
-                                                      width: 3),
+                                                      width: 2),
                                                   image: DecorationImage(
                                                     image: AssetImage(
                                                         'lib/assets/rotate2.jpeg'),
@@ -420,7 +427,7 @@ class HomePage extends StatelessWidget {
                                                   contentPadding:
                                                       EdgeInsets.symmetric(
                                                           vertical: 2.h,
-                                                          horizontal: 2.w),
+                                                          horizontal: 1.w),
                                                   // border: OutlineInputBorder(
                                                   //     borderRadius: BorderRadius.circular(0),
                                                   //     borderSide: BorderSide(
@@ -521,7 +528,7 @@ class HomePage extends StatelessWidget {
                         );
                       }),
                 ),
-                Spacer(),
+                //Spacer(),
                 // Spacer(),
                 // SizedBox(
                 //   height: size.height * 0.02,
