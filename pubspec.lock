@@ -43,13 +43,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.2"
-  chewie:
-    dependency: "direct main"
-    description:
-      name: chewie
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.7.1"
   cli_util:
     dependency: transitive
     description:
@@ -92,13 +85,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.2"
-  csslib:
-    dependency: transitive
-    description:
-      name: csslib
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.17.2"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -106,13 +92,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
-  dbus:
-    dependency: transitive
-    description:
-      name: dbus
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.7.8"
   eventify:
     dependency: transitive
     description:
@@ -207,13 +186,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.4"
-  html:
-    dependency: transitive
-    description:
-      name: html
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.15.3"
   http:
     dependency: "direct main"
     description:
@@ -277,13 +249,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
-  nested:
-    dependency: transitive
-    description:
-      name: nested
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
   package_info_plus:
     dependency: transitive
     description:
@@ -375,13 +340,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.7.3"
-  provider:
-    dependency: transitive
-    description:
-      name: provider
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "6.0.5"
   razorpay_flutter:
     dependency: "direct main"
     description:
@@ -583,41 +541,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.6.0"
-  video_player:
-    dependency: "direct main"
-    description:
-      name: video_player
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.7.0"
-  video_player_android:
-    dependency: transitive
-    description:
-      name: video_player_android
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.4.9"
-  video_player_avfoundation:
-    dependency: transitive
-    description:
-      name: video_player_avfoundation
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.4.9"
-  video_player_platform_interface:
-    dependency: transitive
-    description:
-      name: video_player_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "6.2.0"
-  video_player_web:
-    dependency: transitive
-    description:
-      name: video_player_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.16"
   vxstate:
     dependency: transitive
     description:
@@ -625,20 +548,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.3.0"
-  wakelock_plus:
-    dependency: transitive
-    description:
-      name: wakelock_plus
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.3"
-  wakelock_plus_platform_interface:
-    dependency: transitive
-    description:
-      name: wakelock_plus_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.0"
   webview_flutter:
     dependency: "direct main"
     description:
